@@ -10,8 +10,11 @@ const configdb = {
 };
 
 //database, user , password {host}
-const db = new sequelize(configdb.database, configdb.user, configdb.password, {host: configdb.host, dialect:'mysql'});
-//process.env.DATABASE_URL
-// sequelize("app_notes", "root", "", { host: "localhost", dialect: "mysql" });
+const db = new sequelize(
+	process.env.DB_HOST || "app_notes",
+	process.env.DB_USER || "root",
+	process.env.DB_PASSWORD || "",
+	{ host: process.env.DB_HOST || "localhost", dialect: "mysql" }
+);
 
 export default db;
