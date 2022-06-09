@@ -3,7 +3,7 @@ import cors from "cors";
 import routes from "././routes/notes.routes.js";
 import db from "./db.js";
 const app = express();
-
+const PORT = process.env.PORT|| 3050;
 try {
 	await db.authenticate();
 } catch (error) {
@@ -16,6 +16,6 @@ app.use(express.json());
 //routes
 app.use("/notes", routes);
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
 	console.log("Server is running on port 4000");
 });
